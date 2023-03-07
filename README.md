@@ -38,3 +38,6 @@ show me commit by author(no need full name)
 ```git log --grep="Bugfix:"```
 --grep for global regular expression, search for any commit include the "Bugfix"
 This is why need to write a standard commit message
+
+You can chain these command up together like:
+```git log --since=2022-03-01 --until=2023-03-01 --author=="scott" --greo="initial"``` 
