@@ -15,3 +15,5 @@ What should I config first?
 1. user.name
 2. user.email
 3. color.ui true (like syntax)
+
+Try to write longer description
