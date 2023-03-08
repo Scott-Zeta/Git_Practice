@@ -41,3 +41,25 @@ This is why need to write a standard commit message
 
 You can chain these command up together like:
 ```git log --since=2022-03-01 --until=2023-03-01 --author=="scott" --greo="initial"``` 
+You can chain these command up together like:
+```git log --since=2022-03-01 --until=2023-03-01 --author=="scott" --greo="initial"``` 
+
+## Three tree in Git
+1. Working
+ ||    ```git checkout -- <file>``` discard/undo the change when it is still in working layer 
+ ||    ```git diff``` compare difference in working tree 
+\  /   ```git add/rm/mv``` put it on "track"
+ \/    
+2. Staging index
+ ||    ```git reset HEAD <file>``` to unstage\undo the change when in stage layer 
+ ||    ```git diff --staged``` only compare in Staging tree
+\  /   ```git commit```
+ \/    ```git commit -a``` will skip staging!
+3. Repository
+```git log``` is in this layer, Is nothing in Working and Staging index, it would say "working tree is clean"
+```git show checksum``` will show the change in specific commit
+```git diff checksum1...checksum2/HEAD``` compare difference between two commit
+```git commit --amend -m "add a new change in previous commit"``` Opps, I want to add more but don't want to make a new commit.
+
+## HEAD
+A pointer varible that point to the current branch in repository, usually latest version of current branch
