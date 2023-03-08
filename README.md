@@ -44,7 +44,7 @@ You can chain these command up together like:
 You can chain these command up together like:
 ```git log --since=2022-03-01 --until=2023-03-01 --author=="scott" --greo="initial"``` 
 
-## Three tree in Git
+## Three tree in Git (Format might be messy in reading mode :-<)
 1. Working
  ||    ```git checkout -- <file>``` discard/undo the change when it is still in working layer 
  ||    ```git diff``` compare difference in working tree 
@@ -64,9 +64,27 @@ You can chain these command up together like:
 ```git revert checksum``` revert to olde version, it will be put in the Repository layer
 
 ## HEAD
-A pointer varible that point to the current branch in repository, usually latest version of current branch
+A pointer varible that point to the current branch in repository, usually latest version of current branch.
 
 ## GitIgnore
 useful resouce: https://github.com/github/gitignore
 ```git rm --cached <fileName>``` stop tracking some files after add it into .gitignore
 Can be complex to remove previous change history(If you accidently upload your password,key ```:-(``` )
+
+## Tree-ish
+Use checksum(SHA-1) to refer to a commit, ```^```refer for its parent commit(one before, ```^^``` for two or ```~2```)
+
+## Branch
+```git branch <newBranchName>``` Current branch will be marked as green.
+```git checkout <branchName>``` switch to branch
+!!! Can not switch with Uncommited changes with conflict, what you should do?
+1. commit
+2. discard
+3. stash?
+```git diff <branch_name1>..<branch_name2>``` for compare two branches, can use combine with ```^``` for older version
+You can not delete branch you are in, and will get warning if there are something not mergeed by checking ```branch --no-merged```
+
+## Reset
+1. Soft: Move HEAD pointer, does not change staging index, does not change working directory ```git reset --soft <tree-ish>```, similar to ```--ammed``` roll all change back to staging index, useful if you want to combine several commit
+2. Mixed: ```git reset --mixed <tree-ish>``` roll back to working directory, usefule when you want to seperate the commit
+3. Hard: ```git reset --hard <tree-ish>``` discard everything, pretend nothing hanppend.
