@@ -1,6 +1,6 @@
 # Git_Practice
 
-Even though I start using git when I born, I could never master the git whne I die. :-(
+Even though I start using git when I born, I could never master the git when I die. :-(
 
 ## Git configuration
 1. System: store in /etc/gitconfig or Git in program files(windows)
@@ -87,4 +87,25 @@ You can not delete branch you are in, and will get warning if there are somethin
 ## Reset
 1. Soft: Move HEAD pointer, does not change staging index, does not change working directory ```git reset --soft <tree-ish>```, similar to ```--ammed``` roll all change back to staging index, useful if you want to combine several commit
 2. Mixed: ```git reset --mixed <tree-ish>``` roll back to working directory, usefule when you want to seperate the commit
-3. Hard: ```git reset --hard <tree-ish>``` discard everything, pretend nothing hanppend.
+3. Hard: ```git reset --hard <tree-ish>``` discard everything, pretend nothing hanppend. Usually for undo the merge
+
+## Merge
+how to reduce merge conflit?
+1. keep lines short
+2. keep commits small and focused
+3. beware edit the whitespace
+4. merge often, less conflict
+5. merge from master to brach (let people who charge the branch handle it)
+
+## Stash
+An isolated fourth area from the Three main layer.
+Stash a change before switch branches by ```git stash save <stashName>```, Stash won't save with untracked file by default, check it by ```git stash list```
+(Theorotically, it saved a snapshot of change, then you can use it in anywhere)
+```git stash pop``` pop up a change directly and remove it from the stash, ```appply``` make the change but keep it. (Like pop and peek)
+```git stash drop stash@{list number}``` abort the change inside the stash
+
+## Remote
+```git remote add origin <GitHub url>```, config the git remote settting, origin refer to the remote "name", usally only have one.
+```git push -u <remote name(origin)> <branch name>``` It will ask username and password of GitHub this step
+```git branch -r``` only show the remote branch
+```git pull``` = ```git fetch```(check the conflict before merge) + ```git merge```
